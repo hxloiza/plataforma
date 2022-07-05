@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
    public int coins = 0;
+   
+   // Referencia para o elemento de interface de texto
+   public TMP_Text coinText;
    
    // Guarda uma referência para
    private Controle _controle;
@@ -119,6 +123,9 @@ public class PlayerController : MonoBehaviour
       if (other.CompareTag("coin"))
       {
          coins++;
+
+         coinText.text = coins.ToString();
+         
          Destroy(other.gameObject);
       }
    }
