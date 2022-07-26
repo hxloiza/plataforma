@@ -10,10 +10,9 @@ public class PlayerController : MonoBehaviour
 {
    public int coins = 0;
    
-   // Referencia para o elemento de interface de texto
-   public TMP_Text coinText;
    
-   // Guarda uma referência para
+   
+   // Guarda uma referência para os controles que criamos no InputAction
    private Controle _controle;
    private PlayerInput _playerInput;
    private Camera _mainCamera;
@@ -123,8 +122,8 @@ public class PlayerController : MonoBehaviour
       if (other.CompareTag("coin"))
       {
          coins++;
-
-         coinText.text = coins.ToString();
+         
+         PlayerObserverManager.CoinsChanged(coins);
          
          Destroy(other.gameObject);
       }
